@@ -1,0 +1,7 @@
+<div *ngIf="service">
+	<h1 mat-dialog-title>Voulez-vous vraiment supprimer le service {{ service.service }} ?</h1>
+	<mat-dialog-actions align="end">
+	  	<button mat-raised-button mat-dialog-close>Annuler</button>
+	  	<button mat-raised-button color="warn" (click)="deleteService()">Supprimer</button>
+  	</mat-dialog-actions>
+</div>

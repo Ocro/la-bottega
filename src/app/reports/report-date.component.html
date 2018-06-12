@@ -1,0 +1,39 @@
+<div class="report">
+  <report-tools 
+    (detailsChecked)="displayDetails  = $event" 
+    (amountChecked)="displayAmount  = $event" 
+    (monthChanged)="updateMonth($event)" 
+    (yearChanged)="updateYear($event)"
+    [monthSelect]="month"
+    [yearSelect]="year"
+    [showDisplayDetails]="true">
+  </report-tools>
+  <div class="report-line total">
+    <span>Total</span>
+    <span *ngIf="displayAmount" class="amount">{{ total }}</span>
+    <span>{{ total_reduce }}</span>
+  </div>
+  <div *ngFor="let report of reports" class="report-main">
+    <div class="report-line">
+      <span>{{ report.title }}</span>
+      <span *ngIf="displayAmount" class="amount">{{ report.amount }}</span>
+      <span>{{ report.amount_reduce }}</span>
+    </div>
+    <div *ngFor="let client of report.clients" class="report-sub">
+      <div class="report-line">
+        <span>{{ client.title }}</span>
+        <span *ngIf="displayAmount" class="amount">{{ client.amount }}</span>
+        <span>{{ client.amount_reduce }}</span>
+      </div>
+      <aside *ngIf="displayDetails">
+        <div *ngFor="let service of client.services" class="report-sub">
+          <div class="report-line">
+            <span>{{ service.title }}</span>
+            <span *ngIf="displayAmount" class="amount">{{ service.amount }}</span>
+            <span>{{ service.amount_reduce }}</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

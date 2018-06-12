@@ -1,0 +1,36 @@
+<form class="appointment-form" (ngSubmit)="createAppointment()">
+  <div style="display: table">
+    <mat-form-field style="width: 130px; padding-right: 3px;">
+      <input matInput [matDatepicker]="picker" placeholder="Date" [(ngModel)]="serviceDate" name="serviceDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="display: inline-block; width: initial;">
+      <mat-select placeholder="Sélectionnez les services" [formControl]="servicesSelected" multiple>
+        <mat-select-trigger>
+          <span *ngIf="servicesSelected.value?.length > 0">
+            {{ servicesSelected.value.length }} services sélectionnés
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let service of services" [value]="service">
+          {{ service.service.service }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="servicesSelected?.value?.length > 0" style="margin-top: 20px;">
+      <h3 mat-subheader style="margin: 0; padding: 0; height: 20px;">Complétez les services sélectionnés</h3>
+      <service-form *ngFor="let service of servicesSelected.value; let i = index" [serviceSelected]="servicesSelected.value[i]"></service-form>
+    </div>
+  </div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button type="button" color="primary" (click)="cancelUpdateOrCopyAppointment()" *ngIf="isUpdating">
+    Annuler la modification
+  </button>
+  <button mat-raised-button type="button" color="primary" (click)="cancelUpdateOrCopyAppointment()" *ngIf="isCopying">
+    Annuler la copie
+  </button>
+  <button mat-raised-button type="submit" color="primary" [disabled]="!servicesSelected.value || servicesSelected.value?.length == 0">
+    {{ applyButtonText }}
+  </button>
+</mat-dialog-actions>
+</form>

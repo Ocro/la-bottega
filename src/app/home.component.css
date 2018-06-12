@@ -1,0 +1,60 @@
+.menu-container {
+	margin-top: 20px;
+	width: 560px;
+	margin: auto;
+}
+
+.action-card-primary,
+.action-card-secondary {
+	cursor: pointer;
+	margin: 10px;
+	display: inline-block;
+	border: 4px solid rgb(200, 200, 200);
+	border-radius: 10px;
+}
+
+.action-card-primary:hover,
+.action-card-secondary:hover {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.action-card-primary {
+	font-size: 22px;
+	padding: 30px;
+	text-align: center;
+	width: 250px;
+	padding: 60px 0 60px 0;
+}
+
+.action-card-secondary {
+	font-size: 18px;
+	padding: 15px 0  15px 170px;
+	width: 362px;
+}
+
+.action-card-primary .material-icons,
+.action-card-secondary .material-icons {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-right: 10px;
+}
+
+.action-card-primary .material-icons {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 35px;
+}
+
+.action-card-primary span,
+.action-card-secondary span {
+	vertical-align: text-top;
+}
+
+.action-card-primary span {
+	display: block;
+}
+
+.logo {
+	text-align: center;
+    margin: 120px 0 60px 0;
+}

@@ -1,0 +1,21 @@
+<div class="spinner" [hidden]="loadingComplete"></div>
+<div style="text-align: center; margin-top: 50px"
+     *ngIf="(clients | client: parent.searchText)?.length === 0">
+  <h3 class="mat-subheading-1">Aucun résultat pour &lt;&lt; {{ parent.searchText }} &gt;&gt;</h3>
+  <div class="mat-caption" style="font-style: italic;">Appuyez sur la touche entrer pour créer un client avec les termes recherchés</div>
+</div>
+<div class="clients-list">
+   <div *ngFor="let client of clients | client: parent.searchText" 
+        class="client-details" 
+        id="{{ PREFIX_CLIENT }}{{ client.id }}"
+        (click)="openClientDialog(client.id)" 
+        (parent.validateSearch)="openClientDialog(client.id)">
+      <div>{{ client.name }} {{ client.firstname }}</div>
+      <div>{{ client.phone }}</div>
+      <div>
+        <span *ngIf="client.address">{{ client.address }}, </span>
+        <span *ngIf="client.npa > 0">{{ client.npa }} </span>
+        <span *ngIf="client.city">{{ client.city }}</span>
+      </div>
+   </div>
+</div>

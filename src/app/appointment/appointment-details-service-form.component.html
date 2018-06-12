@@ -1,0 +1,11 @@
+<div *ngIf="serviceSelected">
+  <mat-form-field style="width: 300px; padding-right: 3px;">
+    <input matInput type="text" [value]="serviceSelected.service.service" readonly tabindex="-1">
+  </mat-form-field>
+  <mat-form-field style="width: 566px; padding-right: 3px;">
+    <input matInput type="text" placeholder="Commentaire" [(ngModel)]="serviceSelected.comment">
+  </mat-form-field>
+  <mat-form-field style="width: 40px;">
+    <input matInput type="number" placeholder="Prix" matTooltip="{{ toolTipBasePrice }}" [ngModel]="serviceSelected.price" (ngModelChange)="serviceSelected.price = $event; priceChanged();" name="price">
+  </mat-form-field>
+</div>

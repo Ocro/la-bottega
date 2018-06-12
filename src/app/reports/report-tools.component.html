@@ -1,0 +1,22 @@
+<div class="report-tools">
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Choisissez une année" [ngModel]="yearSelect" (ngModelChange)="yearChanged.emit($event)">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Choisissez un mois" [ngModel]="monthSelect" (ngModelChange)="monthChanged.emit($event)">
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox color="primary" *ngIf="showDisplayDetails" [ngModel]="detailsBox" (ngModelChange)="detailsChecked.emit($event)">Afficher les détails</mat-checkbox>
+    <mat-checkbox color="primary" [ngModel]="amountBox" (ngModelChange)="amountChecked.emit($event)">Colonne des prix sans réduction</mat-checkbox>
+  </div>
+</div>

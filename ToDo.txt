@@ -1,0 +1,7 @@
+---- API ----
+- Use HTTP REST Methods to make API CRUD call (GET, POST, PUT, PATCH, DELETE) instead of passing the CRUD methods in the request body.
+
+---- Angular ----
+- Use async pipe with Observable instead of using Promise (need to rework all services and components).
+- Improve search pipe by removing special char (éàè, etc) in the search terms. Find a better (and more complex) algorithm.
+- Make specs files (testing!).

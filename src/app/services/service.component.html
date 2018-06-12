@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<form (ngSubmit)="onSubmit.emit(service)">
+  <mat-form-field style="width: 330px;">
+    <input matInput type="text" placeholder="Nom du service" 
+           [(ngModel)]="service.service" name="service"
+           #name="ngModel" required>
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+      Nom <strong>requis</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="width: 70px;">
+    <input matInput type="number" placeholder="Prix" 
+           [(ngModel)]="service.price" name="price"  
+           #price="ngModel" required>
+    <mat-error *ngIf="price.invalid && (price.dirty || price.touched) && price.errors.required">
+      Prix <strong>requis</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-raised-button mat-dialog-close>Annuler</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="name.invalid || price.invalid">{{ submitString }}</button>
+  </mat-dialog-actions>
+</form>

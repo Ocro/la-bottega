@@ -1,0 +1,39 @@
+<div>
+	<h1 mat-dialog-title>Ajouter un client</h1>
+  <form (ngSubmit)="createClient()">
+    <div>
+      <mat-form-field style="width: 200px">
+        <input matInput type="text" placeholder="Nom" [(ngModel)]="client.name" name="name" #name="ngModel" required>
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched) && name.errors.required">
+          Nom <strong>requis</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="swapNames()" [disabled]="!enableSwapNames()">
+        <i class="material-icons" matTooltip="Echanger">swap_horiz</i>
+      </button>
+      <mat-form-field style="width: 200px">
+        <input matInput type="text" placeholder="Prénom" [(ngModel)]="client.firstname" name="firstname">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 100px">
+        <input matInput type="text" placeholder="NPA" [(ngModel)]="client.npa" name="npa">
+      </mat-form-field>
+      <button mat-icon-button type="button" (click)="swapLocations()"  [disabled]="!enableSwapLocations()">
+        <i class="material-icons" matTooltip="Echanger">swap_horiz</i>
+      </button>
+      <mat-form-field style="width: 300px">
+        <input matInput type="text" placeholder="Ville" [(ngModel)]="client.city" name="city">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field style="width: 448px">
+        <input matInput type="text" placeholder="Téléphone" [(ngModel)]="client.phone" name="phone">
+      </mat-form-field>
+    </div>
+  	<mat-dialog-actions align="end">
+  	  	<button mat-raised-button type="button" mat-dialog-close>Annuler</button>
+  	  	<button mat-raised-button type="submit" color="primary" [disabled]="name.invalid">Ajouter</button>
+  	</mat-dialog-actions>
+  </form>
+</div>

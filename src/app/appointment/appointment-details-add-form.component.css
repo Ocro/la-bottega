@@ -1,0 +1,11 @@
+form {
+  margin-left: 18px;
+}
+
+.mat-select {
+  width: 250px;
+}
+
+mat-form-field {
+  width: 70px;
+}

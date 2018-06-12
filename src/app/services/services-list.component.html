@@ -1,0 +1,15 @@
+<div class="spinner" [hidden]="loadingComplete"></div>
+<div class="services-list">
+   <div *ngFor="let service of services" class="service-details">
+      <div>{{ service.service }}</div>
+      <div>{{ service.price}} CHF</div>
+      <div>
+         <button mat-icon-button>
+          <i matTooltip="Modifier" class="material-icons" (click)="openServiceUpdateDialog(service.id)">create</i>
+        </button>
+         <button mat-icon-button>
+          <i matTooltip="Supprimer" class="material-icons" (click)="openServiceDeleteDialog(service.id)">delete</i>
+        </button>
+      </div>
+   </div>
+</div>

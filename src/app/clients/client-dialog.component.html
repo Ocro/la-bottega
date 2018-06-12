@@ -1,0 +1,103 @@
+<mat-dialog-content *ngIf="client">
+	<mat-toolbar color="primary" class="mat-elevation-z4">
+		<span>{{ client.name }} {{ client.firstname }}</span>
+		<span class="fill-space"></span>
+		<button mat-icon-button (click)="this.dialogRef.close('delete')">
+      <i matTooltip="Supprimer" class="material-icons">delete</i>
+    </button>
+		<button mat-icon-button (click)="this.dialogRef.close('edit')">
+			<i class="material-icons" matTooltip="Editer">create</i>
+		</button>
+		<button mat-icon-button mat-dialog-close><i class="material-icons">close</i></button>
+	</mat-toolbar>
+	<div class="dialog-content" #dialogContent>
+		<mat-list>
+			<h3 mat-subheader>Coordonnées</h3>
+			<mat-list-item>
+				<i mat-list-icon class="material-icons">person_pin_circle</i>
+				<h4 mat-line *ngIf="!client.address && client.npa == 0 && !client.city">Aucune information</h4>
+				<h4 mat-line *ngIf="client.address">{{ client.address }}</h4>
+				<p mat-line *ngIf="client.npa > 0 || client.city">
+					<span *ngIf="client.npa > 0">{{ client.npa }} </span>
+					<span *ngIf="client.city">{{ client.city }}</span>
+				</p>
+			</mat-list-item>
+			<mat-list-item>
+				<i mat-list-icon class="material-icons">local_phone</i>
+				<h4 mat-line *ngIf="!client.phone">Aucune information</h4>
+				<h4 mat-line *ngIf="client.phone">{{ client.phone }}</h4>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-expansion-panel #expansionAddAppointment [expanded]="appointments?.length == 0">
+			  <mat-expansion-panel-header>
+			    <mat-panel-title>
+						<h3 mat-subheader style="margin-top: 0">{{ addAppointmentTitleText }}</h3>
+			    </mat-panel-title>
+			  </mat-expansion-panel-header>
+				<appointment-details-add-form #appointmentAddForm 
+					[idClient]="client.id" 
+					(appointmentCreated)="appointmentInteractionCompleted($event)" 
+					(appointmentUpdateOrCopyCancelled)="appointmentInteractionCompleted($event)"></appointment-details-add-form>
+			</mat-expansion-panel>
+			<mat-divider></mat-divider>
+			<div *ngIf="appointments?.length > 0">
+				<h3 mat-subheader>Rendez-vous</h3>
+				<div class="appointment">
+					<div class="appointment-date mat-subheading-1">Date</div>
+					<div class="appointment-details">
+						<div class="mat-subheading-1">
+							<div>Service</div>
+							<div></div>
+							<div>Prix</div>
+						</div>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+				<div *ngFor="let appointment of appointments" class="appointment">
+					<div class="appointment-date mat-body-2">{{ formatDate(appointment.date) }}</div>
+					<div class="appointment-menu">
+						<button mat-icon-button [matMenuTriggerFor]="appointmentMenu">
+      				<i class="material-icons">more_vert</i>
+						</button>
+						<mat-menu #appointmentMenu>
+						  <button mat-menu-item (click)="copyAppointment(appointment)">
+						    <i class="material-icons">content_copy</i>
+						    <span>Copier ce rendez-vous</span>
+						  </button>
+						  <button mat-menu-item (click)="updateAppointment(appointment)">
+						    <i class="material-icons">edit</i>
+						    <span>Modifier ce rendez-vous</span>
+						  </button>
+						  <button mat-menu-item (click)="deleteAppointment(appointment)">
+						    <i class="material-icons">delete</i>
+						    <span>Supprimer ce rendez-vous</span>
+						  </button>
+						</mat-menu>
+					</div>
+					<div class="appointment-details" *ngFor="let details of appointment.appointmentsDetails">
+						<div class="mat-body-1">
+							<div>{{ details.service.service }}</div>
+							<div>
+								<span style="text-decoration: line-through; color: #B71C1C; font-size: 0.9em;"
+								      *ngIf="details.service.price != details.price">{{ details.service.price }} CHF</span>
+							</div>
+							<div>{{ details.price }} CHF</div>
+						</div>
+						<div class="mat-body-1 appointment-comment" *ngIf="details.comment">{{ details.comment }}</div>
+					</div>
+					<div class="appointment-details">
+						<div class="mat-body-2 appointment-sum">
+							<div>Total</div>
+							<div>
+								<span style="text-decoration: line-through; color: #B71C1C; font-size: 0.9em;"
+								      *ngIf="getAppointmentSum(appointment) != getAppointmentSumReduce(appointment)">{{ buffSumAppointmentDetails }} CHF</span>
+							</div>
+							<div>{{ buffSumReduceAppointmentDetails }} CHF</div>
+						</div>
+					</div>
+					<mat-divider></mat-divider>
+				</div>
+			</div>
+		</mat-list>
+	</div>
+</mat-dialog-content>

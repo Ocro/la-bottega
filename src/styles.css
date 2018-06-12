@@ -1,0 +1,55 @@
+/* Available theme:
+deeppurple-amber.css
+indigo-pink.css
+pink-bluegrey.css
+purple-green.css */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import '~normalize.css/normalize.css';
+
+/** Spinner */
+.spinner {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.light .mat-form-field-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 100;
+}
+
+.light .mat-form-field-ripple,
+.light .mat-form-field-underline {
+	background: white;
+}
+
+.floating-btn {
+	display: block;
+	position: fixed!important;
+	bottom: 30px;
+	right: 30px;
+	zoom: 1.5;
+}
+
+.appointment-form .mat-select-underline,
+service-form .mat-select-underline {
+  bottom: 1px!important;
+}
+
+.mat-select-panel {
+  max-height: 400px!important;
+}
+
+.mat-expansion-panel-body {
+  overflow: initial!important;
+}

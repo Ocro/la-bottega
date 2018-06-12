@@ -1,0 +1,70 @@
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+.mat-expansion-panel-header {
+  padding-left: 0;
+}
+
+mat-dialog-content {
+  padding : 0;
+  margin: -24px;
+  max-height: fit-content;
+}
+
+.mat-subheading-1 {
+  font-weight: bold;
+  color: rgba(0, 0, 0, .5);
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+.mat-list-item {
+  display: inline-block;
+}
+
+.dialog-content {
+  overflow: auto;
+  max-height: 686px;
+}
+
+.appointment {
+  margin-top: 10px;
+}
+
+.appointment-date {
+  font-weight: bold;
+  color: rgba(0, 0, 0, .5);
+  float: left;
+  margin-left: 20px;
+}
+
+.appointment-details {
+  margin-left: 150px;
+  margin-bottom: 10px;
+}
+
+.appointment-details > div:first-child {
+  display: flex;
+}
+
+.appointment-details > div > div:not(:first-child) {
+  width: 120px;
+  text-align: center;
+}
+
+.appointment-details > div > div:first-child {
+  width: 100%;
+}
+
+.mat-caption {
+  font-style: italic;
+  color: rgba(0, 0, 0, .7);
+  margin-top: -5px;
+}
+
+.appointment-line {
+  line-height: 40px;
+}

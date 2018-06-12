@@ -1,0 +1,44 @@
+mat-sidenav-container {
+	top: 64px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}
+
+mat-sidenav {
+	width: 250px;
+	border-right: 1px solid rgba(0,0,0,.12);
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54);
+	font-size: 20px !important;
+}
+
+mat-nav-list .mat-line {
+  color: rgba(0, 0, 0, 0.74);
+	font-size: 14px;
+	font-weight: 500;
+}
+
+mat-toolbar {
+	position: relative;
+	z-index: 20;
+}
+
+.mat-mini-fab {
+  box-shadow: none;
+}
+
+.brand {
+	margin-left: 10px;
+	color: white;
+	font-size: 20px;
+	font-weight: 100;
+}
+
+.menu-search {
+	width: 600px;
+	margin: 0 0 0 200px;
+}

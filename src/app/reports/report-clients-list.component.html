@@ -1,0 +1,32 @@
+<div style="margin: 20px 20px 20px 64px;">
+  <mat-form-field style="width: 410px">
+    <mat-select placeholder="Choisissez une année" [ngModel]="yearSelect" (ngModelChange)="yearChanged($event)">
+      <mat-option *ngFor="let year of years" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-hint align="start"><strong>Affiche les clients dont le dernier rendez-vous remonte à avant l'année sélectionnée</strong> </mat-hint>
+  </mat-form-field>
+  <div>{{ clients?.length }} résultats</div>
+</div>
+<div class="spinner" [hidden]="loadingComplete"></div>
+<div style="text-align: center; margin-top: 50px"
+     *ngIf="clients?.length === 0">
+  <h3 class="mat-subheading-1">Aucun résultat</h3>
+</div>
+<div class="clients-list">
+   <div *ngFor="let client of clients" 
+        class="client-details" 
+        id="{{ PREFIX_CLIENT }}{{ client.id }}"
+        (click)="openClientDialog(client.id)" 
+        (parent.validateSearch)="openClientDialog(client.id)">
+      <div>{{ client.name }} {{ client.firstname }}</div>
+      <div>{{ client.phone }}</div>
+      <div>
+        <span *ngIf="client.address">{{ client.address }}, </span>
+        <span *ngIf="client.npa > 0">{{ client.npa }} </span>
+        <span *ngIf="client.city">{{ client.city }}</span>
+      </div>
+      <div (click)="openClientDeleteDialog(client.id)"><i mat-list-icon class="material-icons">delete</i></div>
+   </div>
+</div>

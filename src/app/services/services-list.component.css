@@ -1,0 +1,56 @@
+.services-list {
+	margin: 10px 40px;
+}
+
+.service-details {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: table;
+	height: 40px;
+	table-layout: fixed;
+	width: 60%;
+	padding: 0 20px;
+}
+
+.service-details:hover {
+	background: rgba(0,0,0,.04);
+}
+
+.mat-icon-button i {
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 20px !important;
+}
+
+.service-details div {
+	box-sizing: border-box;
+	display: table-cell;
+	font-size: 13px;
+	overflow: hidden;
+	padding: 4px;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.service-details div:first-child {
+	font-weight: 600;
+}
+
+.service-details div:nth-child(n+2) {
+	width: 20%;
+}
+
+.service-details div:last-child {
+	text-align: right;
+	visibility: hidden;
+}
+
+.service-details:hover div:last-child {
+	visibility: visible;
+}
+
+@media screen and (max-width: 1234px) {
+  .service-details {
+    width: 100%;
+  }
+}

@@ -1,0 +1,71 @@
+<section class="mat-typography">
+  <mat-toolbar color="primary" class="mat-elevation-z7">
+    <button mat-mini-fab color="primary" (click)="sidenav.toggle()">
+      <i class="material-icons">menu</i>
+    </button>
+    <span class="brand">{{ title }}</span>
+    <mat-input-container class="light menu-search" style="zoom: .8">
+      <input type="search" matInput placeholder="Rechercher un client" [(ngModel)]="searchText" (keypress)="startSearch($event)">
+      <i class="material-icons" matSuffix>search</i>
+    </mat-input-container>
+    <button mat-button style="margin-left: 10px;" (click)="openClientCreateDialog()">
+      <i class="material-icons" matSuffix>person_add</i>
+      <span>Ajouter un client</span>
+    </button>
+    <button mat-icon-button style="margin-left: 10px;" [matMenuTriggerFor]="actionMenu">
+      <i class="material-icons" matSuffix>more_vert</i>
+    </button>
+    <mat-menu #actionMenu="matMenu">
+      <button mat-menu-item (click)="openServiceCreateDialog()">
+        <span>Ajouter un service</span>
+      </button>
+      <mat-divider></mat-divider>
+      <a href="{{ backupLink }}" mat-menu-item>
+        Télécharger la base de données
+      </a>
+    </mat-menu>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened="true">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">
+          <i mat-list-icon class="material-icons mat-dark">home</i>
+          <p mat-line>Accueil</p>
+        </a>
+        <h3 mat-subheader>Annuaire</h3>
+        <a mat-list-item routerLink="/clients" (click)="clearSearchBar()">
+          <i mat-list-icon class="material-icons mat-dark">contacts</i>
+          <p mat-line>Clients</p>
+        </a>
+        <a mat-list-item routerLink="/services">
+          <i mat-list-icon class="material-icons">local_florist</i>
+          <p mat-line>Services</p> 
+        </a>
+        <h3 mat-subheader>Bulletin</h3>
+        <a mat-list-item routerLink="/reports/date">
+          <i mat-list-icon class="material-icons">event_note</i>
+          <p mat-line>Par date</p>
+        </a>
+        <a mat-list-item routerLink="/reports/client">
+          <i mat-list-icon class="material-icons">polymer</i>
+          <p mat-line>Par client</p>
+        </a>
+        <a mat-list-item routerLink="/reports/service">
+          <i mat-list-icon class="material-icons">person</i>
+          <p mat-line>Par service</p>
+        </a>
+        <h3 mat-subheader>Données</h3>
+        <a mat-list-item routerLink="/reports/oldclient">
+          <i mat-list-icon class="material-icons">face</i>
+          <p mat-line>Anciens clients</p>
+        </a>
+        <!--<mat-divider></mat-divider>
+        <a mat-list-item routerLink="/services">
+          <i mat-list-icon class="material-icons">settings</i>
+          <p mat-line>Paramètres</p>
+        </a>-->
+     </mat-nav-list>
+    </mat-sidenav>
+    <div class="main-content"><router-outlet></router-outlet></div>
+  </mat-sidenav-container>
+</section>
