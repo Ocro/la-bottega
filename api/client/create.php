@@ -27,7 +27,7 @@ if (empty($data) || empty($data->name))
 $client->name = $data->name;
 $client->firstname = $data->firstname ?? "";
 $client->phone = $data->phone ?? "";
-//$client->address = $data->address;
+$client->address = $data->address ?? "";
 $client->npa = (int)($data->npa ?? 0);
 $client->city = $data->city ?? "";
  

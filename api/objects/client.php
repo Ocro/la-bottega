@@ -43,7 +43,7 @@ class Client {
         $query = "insert 
                     into $this->table_name 
                   set
-                    name=:name, firstname=:firstname, city=:city, npa=:npa, phone=:phone;";
+                    name=:name, firstname=:firstname, address=:address, city=:city, npa=:npa, phone=:phone;";
      
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -51,6 +51,7 @@ class Client {
         // sanitize
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->firstname = htmlspecialchars(strip_tags($this->firstname));
+        $this->address = htmlspecialchars(strip_tags($this->address));
         $this->city = htmlspecialchars(strip_tags($this->city));
         $this->npa = htmlspecialchars(strip_tags($this->npa));
         $this->phone = htmlspecialchars(strip_tags($this->phone));
@@ -58,6 +59,7 @@ class Client {
         // bind values
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":firstname", $this->firstname);
+        $stmt->bindParam(":address", $this->address);
         $stmt->bindParam(":city", $this->city);
         $stmt->bindParam(":npa", $this->npa);
         $stmt->bindParam(":phone", $this->phone);
@@ -102,6 +104,7 @@ class Client {
                   set
                     name=:name,
                     firstname=:firstname,
+                    address=:address,
                     phone=:phone, 
                     npa=:npa, 
                     city=:city
@@ -114,6 +117,7 @@ class Client {
         $this->id = htmlspecialchars(strip_tags($this->id));
         $this->name = htmlspecialchars(strip_tags($this->name));
         $this->firstname = htmlspecialchars(strip_tags($this->firstname));
+        $this->address = htmlspecialchars(strip_tags($this->address));
         $this->phone = htmlspecialchars(strip_tags($this->phone));
         $this->npa = htmlspecialchars(strip_tags($this->npa));
         $this->city = htmlspecialchars(strip_tags($this->city));
@@ -122,6 +126,7 @@ class Client {
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":firstname", $this->firstname);
+        $stmt->bindParam(":address", $this->address);
         $stmt->bindParam(":phone", $this->phone);
         $stmt->bindParam(":npa", $this->npa);
         $stmt->bindParam(":city", $this->city);

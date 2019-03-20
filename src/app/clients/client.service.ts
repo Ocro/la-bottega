@@ -39,7 +39,8 @@ export class ClientService {
                   { 
                     name: client.name,
                     firstname: client.firstname,
-                    phone: client.phone, 
+                    address: client.address,
+                    phone: client.phone,
                     city: client.city, 
                     npa: client.npa 
                   })
@@ -55,7 +56,8 @@ export class ClientService {
                     id: client.id, 
                     name: client.name,
                     firstname: client.firstname,
-                    phone: client.phone, 
+                    address: client.address,
+                    phone: client.phone,
                     city: client.city, 
                     npa: client.npa 
                   })

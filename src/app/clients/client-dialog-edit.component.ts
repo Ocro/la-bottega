@@ -24,6 +24,7 @@ export class ClientDialogEditComponent {
 	client: Client;
   clientName: string;
   clientFirstname: string;
+  clientAddress: string;
   clientNpa: string;
   clientCity: string;
   clientPhone: string;
@@ -66,6 +67,7 @@ export class ClientDialogEditComponent {
       this.client = client
       this.clientName = this.client.name;
       this.clientFirstname = this.client.firstname;
+      this.clientAddress = this.client.address;
       this.clientNpa = this.client.npa;
       this.clientCity = this.client.city;
       this.clientPhone = this.client.phone;
@@ -79,8 +81,8 @@ export class ClientDialogEditComponent {
       id: this.client.id,
       name: this.clientName,
       firstname: this.clientFirstname,
+      address: this.clientAddress,
       phone: this.clientPhone,
-      address: null,
       npa: this.clientNpa,
       city: this.clientCity
     }).then(response => {
@@ -90,6 +92,7 @@ export class ClientDialogEditComponent {
         message = "Les informations ont été modifiées.";
         this.client.name = this.clientName;
         this.client.firstname = this.clientFirstname;
+        this.client.address = this.clientAddress;
         this.client.npa = this.clientNpa;
         this.client.city = this.clientCity;
         this.client.phone = this.clientPhone;
@@ -112,6 +115,7 @@ export class ClientDialogEditComponent {
   hasChanges(): boolean {
     return this.clientName != this.client.name ||
            this.clientFirstname != this.client.firstname ||
+           this.clientAddress != this.client.address ||
            this.clientNpa != this.client.npa ||
            this.clientCity != this.client.city ||
            this.clientPhone != this.client.phone;
