@@ -18,7 +18,9 @@ export class ClientPipe implements PipeTransform {
               client.firstname && client.firstname.toLowerCase().indexOf(term.toLowerCase()) == 0 ||
               client.address && client.address.toLowerCase().indexOf(term.toLowerCase()) == 0 ||
               client.npa && client.npa.toLowerCase().indexOf(term.toLowerCase()) == 0 ||
-              client.city && client.city.toLowerCase().indexOf(term.toLowerCase()) == 0))
+              client.city && client.city.toLowerCase().indexOf(term.toLowerCase()) == 0 ||
+              client.address && client.address.replace(/ /g, '').toLowerCase().indexOf(term.toLowerCase()) == 0 ||
+              client.phone && client.phone.replace(/ /g, '').toLowerCase().indexOf(term.toLowerCase()) == 0))
           return false;
       }
 
