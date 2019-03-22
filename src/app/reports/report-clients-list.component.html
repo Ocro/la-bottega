@@ -1,5 +1,5 @@
 <div style="margin: 20px 20px 20px 64px;">
-  <mat-form-field style="width: 410px">
+  <mat-form-field style="width: 500px">
     <mat-select placeholder="Choisissez une année" [ngModel]="yearSelect" (ngModelChange)="yearChanged($event)">
       <mat-option *ngFor="let year of years" [value]="year">
         {{ year }}
@@ -7,7 +7,7 @@
     </mat-select>
     <mat-hint align="start"><strong>Affiche les clients dont le dernier rendez-vous remonte à avant l'année sélectionnée</strong> </mat-hint>
   </mat-form-field>
-  <div>{{ clients?.length }} résultats</div>
+  <div style="margin-top: 10px;">{{ clients?.length }} résultats</div>
 </div>
 <div class="spinner" [hidden]="loadingComplete"></div>
 <div style="text-align: center; margin-top: 50px"

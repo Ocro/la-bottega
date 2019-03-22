@@ -53,3 +53,7 @@ service-form .mat-select-underline {
 .mat-expansion-panel-body {
   overflow: initial!important;
 }
+
+.mat-icon-button {
+    outline: none!important;
+}

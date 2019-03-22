@@ -17,7 +17,7 @@
 				<i mat-list-icon class="material-icons">person_pin_circle</i>
 				<h4 mat-line *ngIf="!client.address && client.npa == 0 && !client.city">Aucune information</h4>
 				<h4 mat-line *ngIf="client.address">{{ client.address }}</h4>
-				<p mat-line *ngIf="client.npa > 0 || client.city">
+				<p mat-line *ngIf="client.npa > 0 || client.city" style="margin-top: 5px;">
 					<span *ngIf="client.npa > 0">{{ client.npa }} </span>
 					<span *ngIf="client.city">{{ client.city }}</span>
 				</p>
