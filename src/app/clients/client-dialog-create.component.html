@@ -8,7 +8,7 @@
           Nom <strong>requis</strong>
         </mat-error>
       </mat-form-field>
-      <button mat-icon-button type="button" (click)="swapNames()" [disabled]="!enableSwapNames()">
+      <button mat-icon-button type="button" (click)="swapNames()" [disabled]="!enableSwapNames()" tabindex="-1">
         <i class="material-icons" matTooltip="Echanger">swap_horiz</i>
       </button>
       <mat-form-field style="width: 200px">
@@ -24,7 +24,7 @@
       <mat-form-field style="width: 100px">
         <input matInput type="text" placeholder="NPA" [(ngModel)]="client.npa" name="npa">
       </mat-form-field>
-      <button mat-icon-button type="button" (click)="swapLocations()"  [disabled]="!enableSwapLocations()">
+      <button mat-icon-button type="button" (click)="swapLocations()"  [disabled]="!enableSwapLocations()"  tabindex="-1">
         <i class="material-icons" matTooltip="Echanger">swap_horiz</i>
       </button>
       <mat-form-field style="width: 300px">
